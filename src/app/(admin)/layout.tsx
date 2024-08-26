@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Navbar from '../components/navbar';
-
 export interface LayoutProps {
   children: React.ReactNode;
 }
@@ -9,7 +7,6 @@ export interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <Navbar />
       <div>{children}</div>
     </>
   );

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Login() {
-  const { login } = useAuth();
+  const { login, googleLogin } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -22,6 +22,15 @@ export default function Login() {
     }
   };
 
+  const handleGoogleLogin = async () => {
+    try {
+      await googleLogin();
+      router.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <AuthForm
       title='Login'
@@ -31,6 +40,7 @@ export default function Login() {
       setPassword={setPassword}
       onSubmit={handleSubmit}
       buttonText='Login'
+      onGoogleLogin={handleGoogleLogin}
     />
   );
 }

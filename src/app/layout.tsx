@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 
 import './globals.css';
 import { AuthContextProvider } from './context/AuthContext';
+import Navbar from './components/navbar';
 
 const inter = Plus_Jakarta_Sans({ subsets: ['latin'] });
 
@@ -19,7 +20,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <AuthContextProvider>{children}</AuthContextProvider>
+        <AuthContextProvider>
+          <Navbar />
+          {children}
+        </AuthContextProvider>
       </body>
     </html>
   );

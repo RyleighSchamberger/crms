@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function Signup() {
-  const { signup } = useAuth();
+  const { signup, googleLogin } = useAuth();
   const router = useRouter();
 
   const [email, setEmail] = useState('');
@@ -16,7 +16,16 @@ export default function Signup() {
     e.preventDefault();
     try {
       await signup(email, password);
-      router.push('/login');
+      router.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      await googleLogin();
+      router.push('/dashboard');
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +40,7 @@ export default function Signup() {
       setPassword={setPassword}
       onSubmit={handleSubmit}
       buttonText='Sign Up'
+      onGoogleLogin={handleGoogleLogin}
     />
   );
 }

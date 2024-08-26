@@ -1,6 +1,7 @@
 'use client';
 
 import ProtectedRoute from '@/app/components/ProtextedRoute';
+
 import React from 'react';
 
 const Dashboard = () => {
